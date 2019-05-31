@@ -3,8 +3,8 @@
   Start editing to see some magic happen :)
 </p>
 <div class="searchArea">
-  <input appKeyListControl #selectedList (arrowDown)="arrowkeyLocation=$event" type="text" autoComplete="off"   placeholder='enter here' (keyup.enter)="selectedList.value=items[arrowkeyLocation].key" 
-    >
+  <input appKeyListControl #selectedList (arrowDown)="arrowkeyLocation=$event" type="text" autoComplete="off"   placeholder='enter' (keyup.enter)="selectedList.value=items[arrowkeyLocation].key" 
+    [attr.data-arrayMaxLength]="'5'">
   <div class="results-list">
     <li *ngFor="let list of items; let i = index"
     [class.active]="i == arrowkeyLocation" (click)="selectedList.value=list.key">
