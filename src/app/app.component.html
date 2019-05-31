@@ -1,0 +1,15 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<div class="searchArea">
+  <input appKeyListControl #selectedList (arrowDown)="arrowkeyLocation=$event" type="text" autoComplete="off"   placeholder='test' (keyup.enter)="selectedList.value=items[arrowkeyLocation].key" 
+    >
+  <div class="results-list">
+    <li *ngFor="let list of items; let i = index"  #li 
+    [class.active]="i == arrowkeyLocation" (click)="selectedList.value=list.key">
+      <span class="result">{{list.key}}</span>
+    </li>
+  </div>
+</div>
+
