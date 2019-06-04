@@ -14,7 +14,6 @@ export class AppComponent  {
 
   autocompleteSearch(event){
    console.log(event.target.value);
-
  }
 
 }
