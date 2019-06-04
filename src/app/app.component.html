@@ -4,11 +4,22 @@
 </p>
 <div class="searchArea">
   <input appKeyListControl #selectedList (arrowDown)="arrowkeyLocation=$event" type="text" autoComplete="off"   placeholder='enter' (keyup.enter)="selectedList.value=items[arrowkeyLocation].key" 
-    [attr.data-arrayMaxLength]="items.length">
+    [attr.data-arrayMaxLength]="items.length" (click)="arrowkeyLocation=0">
   <div class="results-list">
     <li *ngFor="let list of items; let i = index"
     [class.active]="i == arrowkeyLocation" (click)="selectedList.value=list.key">
-      <span class="result">{{list.key }}</span>{{items.length}}
+      <span class="result">{{list.key }}</span>
+    </li>
+  </div>
+</div>
+
+<div class="searchArea">
+  <input appKeyListControl #selectedList1 (arrowDown)="arrowkeyLocation=$event" type="text" autoComplete="off"   placeholder='enter' (keyup.enter)="selectedList1.value=views[arrowkeyLocation].new" 
+    [attr.data-arrayMaxLength]="views.length"(click)="arrowkeyLocation=0" (keyup)="autocompleteSearch($event)" >
+  <div class="results-list">
+    <li *ngFor="let check of views; let i = index"
+    [class.active]="i == arrowkeyLocation" (click)="selectedList1.value=check.new">
+      <span class="result">{{check.new }}</span>
     </li>
   </div>
 </div>

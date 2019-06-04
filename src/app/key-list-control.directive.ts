@@ -8,7 +8,8 @@ export class KeyListControlDirective {
   constructor(private el: ElementRef) { }
   arrowkeyLocation = 0;
   @HostListener('keydown',['$event']) onkeydown(event: KeyboardEvent) { 
-    let maxLength = event.target.dataset.arraymaxlength;
+    debugger
+    let maxLength:any = (<HTMLElement>event.target).dataset.arraymaxlength;
     maxLength = maxLength-1;
      switch (event.keyCode) {      
         case 38: // this is the ascii of arrow up
@@ -31,11 +32,20 @@ export class KeyListControlDirective {
                   break;
                 }
         case 13:
-              this.arrowkeyLocation=0;
-              this.arrowDown.emit(this.arrowkeyLocation);
-                break
+             this.arrowkeyLocation=0;
+             //this.arrowDown.emit(this.arrowkeyLocation);    
+                  break
                  
     }
+  }
+
+   @HostListener('change',['$event']) onchange(event: KeyboardEvent) { 
+    this.arrowkeyLocation=0;
+  }
+  @HostListener('focusout', ['$event'])
+  onFocusout(target) {
+    console.log('Out' + this.arrowkeyLocation)
+    this.arrowkeyLocation=0;
   }
 
 }
